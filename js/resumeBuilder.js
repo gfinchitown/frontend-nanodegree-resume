@@ -1,3 +1,4 @@
+//Header content: pic, name & role
 var formattedBioPic = HTMLbioPic.replace("%data%", "images/Face1.jpg");
 var formattedName = HTMLheaderName.replace("%data%", "Gary Ford");
 var formattedRole = HTMLheaderRole.replace("%data%", "Front-end Web Developer");
@@ -101,7 +102,7 @@ var projects = {
 	]
 }
 
-
+//Skills at a glance content
 if (bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
 
@@ -111,7 +112,9 @@ if (bio.skills.length > 0) {
 	}
 }
 
-for (job in work.jobs) {
+//Work Experience content
+function displayWork() {
+	for (job in work.jobs) {
 	$('#workExperience').append(HTMLworkStart);
 
 	var jobEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
@@ -121,7 +124,11 @@ for (job in work.jobs) {
 	var jobDescription = HTMLworkDescription.replace('%data%', work.jobs[job].description);
 	var formattedEmployerTitle = jobEmployer + jobTitle;
 	$('.work-entry:last').append(formattedEmployerTitle).append(jobCity).append(jobYears).append(jobDescription);
+	}
 }
+
+displayWork();
+
 
 
 
