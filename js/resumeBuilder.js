@@ -1,6 +1,8 @@
+var formattedBioPic = HTMLbioPic.replace("%data%", "images/Face1.jpg");
 var formattedName = HTMLheaderName.replace("%data%", "Gary Ford");
 var formattedRole = HTMLheaderRole.replace("%data%", "Front-end Web Developer");
 
+$("#header").prepend(formattedBioPic);
 $("#header").append(formattedName);
 $("#header").append(formattedRole);
 
