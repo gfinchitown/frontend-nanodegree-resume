@@ -4,8 +4,9 @@ var formattedName = HTMLheaderName.replace("%data%", "Gary Ford");
 var formattedRole = HTMLheaderRole.replace("%data%", "Front-end Web Developer");
 
 $("#header").prepend(formattedBioPic);
-$("#header").append(formattedName);
-$("#header").append(formattedRole);
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+
 
 //Bio Object
 var bio = {
@@ -25,18 +26,17 @@ var bio = {
 }
 
 //Education Object
-
 var education = {
 	"schools": [
 		{
 			"name": "Loyola University",
-			"city": "Chicago, IL",
+			"location": "Chicago, IL",
 			"major": "Introduction to Programming",
 			"date": 2000
 		},
 		{
 			"name": "George Washington University",
-			"city": "Washington D.C.",
+			"location": "Washington D.C.",
 			"major": "Publishing",
 			"date": 1995
 		}
@@ -64,14 +64,14 @@ var work = {
 			"employer": "Self-Employed",
 			"title": "Freeelance Web Developer",
 			"years": "February 2014 to Present",
-			"city": "Long Beach, CA",
+			"location": "Long Beach, CA",
 			"description": "Designed and coded websites for clients representing numerous industries including graphic design, photography and acting."
 		},
 		{
 			"employer": "The Quarasan Group",
 			"title": "Production Coordinator",
 			"years": "September 2001 to April 2004",
-			"city": "Chicago, IL",
+			"location": "Chicago, IL",
 			"description": "Coordinated digital workflow of images and traditional artwork from image aquisition to page production."
 		}
 	]
@@ -83,21 +83,21 @@ var projects = {
 	"projects": [
 		{
 			"title": "Brash Puppy Creative",
-			"dates": "February 2014",
+			"date": "February 2014",
 			"description": "Website for Brash Puppy Creative",
-			"images": projectImages[0]
+			"image": projectImages[0]
 		},
 		{
 			"title": "Tiago Ferreira",
-			"datesWorked": "October 2014",
+			"date": "October 2014",
 			"description": "Website for Tiago Ferreira - Hollywood Actor",
-			"images": projectImages[1]
+			"image": projectImages[1]
 		},
 		{
 			"title": "Badass Felines",
-			"datesWorked": "August 2014",
+			"date": "August 2014",
 			"description": "Side project website of Badass Felines",
-			"images": projectImages[2]
+			"image": projectImages[2]
 		}
 	]
 }
@@ -115,20 +115,38 @@ if (bio.skills.length > 0) {
 //Work Experience content
 function displayWork() {
 	for (job in work.jobs) {
-	$('#workExperience').append(HTMLworkStart);
+	$("#workExperience").append(HTMLworkStart);
 
-	var jobEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
-	var jobTitle = HTMLworkTitle.replace('%data%', work.jobs[job].title);
-	var jobCity = HTMLworkLocation.replace('%data%', work.jobs[job].city);
-	var jobYears = HTMLworkDates.replace('%data%', work.jobs[job].years);
-	var jobDescription = HTMLworkDescription.replace('%data%', work.jobs[job].description);
+	var jobEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var jobTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var jobCity = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+	var jobYears = HTMLworkDates.replace("%data%", work.jobs[job].years);
+	var jobDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 	var formattedEmployerTitle = jobEmployer + jobTitle;
-	$('.work-entry:last').append(formattedEmployerTitle).append(jobCity).append(jobYears).append(jobDescription);
+	$(".work-entry:last").append(formattedEmployerTitle).append(jobCity).append(jobYears).append(jobDescription);
 	}
 }
 
 displayWork();
 
+//Projects content
+projects.display = function() {
+	for(project in projects.projects) {
+		$("#projects").append(HTMLprojectStart);
+
+		var projectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
+		var projectDate = HTMLprojectDates.replace("%data%", projects.projects[project].date);
+		var projectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
+		var projectUrl = HTMLprojectImage.replace("%data", projects.projects[project].image);
+
+		$(".project-entry:last").append(projectTitle).append(projectDate).append(projectDescription).append(projectUrl);
+	}
+}
+
+projects.display();
+
+
+$("#mapDiv").append(googleMap);
 
 
 
