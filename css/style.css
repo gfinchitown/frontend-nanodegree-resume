@@ -8,10 +8,25 @@
   overflow: auto;
 }
 
+#main {
+  max-width: 1060px;
+  margin: 0 auto;
+}
+
 .education-entry, .work-entry, .project-entry {
   padding-left: 5%;
   padding-right: 5%;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+#name {
+  margin-right: 10px;
+}
+
+#name,
+#skillsH3,
+.orange-text {
+  color: #9E5E00;
 }
 
 h1 {
@@ -22,11 +37,15 @@ h1 {
 }
 
 h2 {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 24px;
-  color: #999999;
+  color: #000;
   line-height: 29px;
   padding: 10px;
+}
+
+h2.center-text {
+  color: #FFF;
 }
 
 h3 {
@@ -74,49 +93,56 @@ p {
 }
 
 a {
-  color: #1199C3;
+  color: #22A4FF;
   text-decoration: none;
   display: block;
 }
 
 .welcome-message {
   font-style: italic;
-  font-size: 18px;
-  color: #F3F3F3;
+  font-size: 20px;
+  color: #414042;
   line-height: 28px;
 }
 
 #skillsH3 {
-  color: #F5AE23;
-  display: none;
+  margin-top: 10px;
 }
 
 .orange {
-  background-color: #F5AE23;
-}
-
-.orange-text {
-  color: #F5AE23;
+  background-color: #9E5E00;
 }
 
 .white-text {
-  font-weight: 700;
-  color: #FFFFFF;
+  font-weight: 600;
+  color: #414042;
 }
 
 .gray {
-  background-color: #F3F3F3;
   padding-bottom: 10px;
   clear:both;
 }
 
 .dark-gray {
-  background-color: #4A4A4A;
+  background-color: #bcbec0;
 }
 
 /* TODO: Replace with image later */
 #header {
   background-color: #484848;
+  background: url('../images/coast.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#workExperience,
+#education {
+  background-color: rgba(158, 94, 0, 0.2);
+}
+
+#projects,
+#mapDiv {
+  background-color: #bcbec0;
 }
 
 .flex-box {
@@ -145,13 +171,13 @@ ul {
 
 .biopic {
   float: left;
-  padding: 10px;
+  margin: 15px;
   width: 200px;
-  display: none;
+  box-shadow: 2px 2px 20px;
 }
 
-img {
-  padding: 10px;
+.project-image {
+  border: 3px solid #999;
 }
 
 /* Bar chart stuff */
@@ -209,6 +235,24 @@ span {
   height: 400px;
   width: 100%;
   padding-bottom: 5%;
+}
+
+@media only screen and (max-width: 430px) {
+  .project-image {
+    max-width: 100%;
+  }
+
+  #skills {
+    display: block;
+  }
+
+  .white-text {
+    font-size: 14px;
+  }
+
+  #skillsH3 {
+    font-size: 18px;
+  }
 }
 
 @media only screen and (min-width: 750px) {

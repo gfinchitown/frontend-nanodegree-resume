@@ -85,7 +85,7 @@ var work = {
 
 
 //Project Object
-var projectImages = ["http://brashpuppycreative.bitballoon.com", "http://www.tiagomsferreira.com", "http://badassfelines.bitballoon.com"];
+var projectImages = ["images/brashPuppy.jpg", "images/tiago.jpg", "images/felines.jpg"];
 var projects = {
 	"projects": [
 		{
@@ -112,8 +112,8 @@ var projects = {
 
 //Header, Bio & Footer content
 bio.display = function() {
-	var formattedName = HTMLheaderName.replace("%data%", "Gary Ford");
-	var formattedRole = HTMLheaderRole.replace("%data%", "Front-end Web Developer");
+	var formattedName = HTMLheaderName.replace("%data%", bio.name);
+	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 	var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
 	var formattedCell = HTMLmobile. replace("%data%", bio.contacts.cellNumber);
 	var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
@@ -125,6 +125,9 @@ bio.display = function() {
 	$("#topContacts").append(formattedCell).append(formattedEmail).append(formattedTwitter).append(formattedGithub).append(formattedLocation);
 
 	$("#footerContacts").append(formattedCell).append(formattedEmail).append(formattedTwitter).append(formattedGithub);
+
+	var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+	$("#header").append(formattedMessage);
 
 	//Skills at a glance content
 	if (bio.skills.length > 0) {
@@ -165,7 +168,7 @@ projects.display = function() {
 		var projectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
 		var projectDate = HTMLprojectDates.replace("%data%", projects.projects[project].date);
 		var projectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
-		var projectUrl = HTMLprojectImage.replace("%data", projects.projects[project].image);
+		var projectUrl = HTMLprojectImage.replace("%data%", projects.projects[project].image);
 
 		$(".project-entry:last").append(projectTitle).append(projectDate).append(projectDescription).append(projectUrl);
 	}
