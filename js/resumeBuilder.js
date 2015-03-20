@@ -54,19 +54,22 @@ var projects = {
 			"title": "Brash Puppy Creative",
 			"date": "February 2014",
 			"description": "Website for Brash Puppy Creative",
-			"image": projectImages[0]
+			"image": projectImages[0],
+			"url": "http://brashpuppycreative.bitballoon.com"
 		},
 		{
 			"title": "Tiago Ferreira",
 			"date": "October 2014",
 			"description": "Website for Tiago Ferreira - Hollywood Actor",
-			"image": projectImages[1]
+			"image": projectImages[1],
+			"url": "http://www.tiagomsferreira.com"
 		},
 		{
 			"title": "Badass Felines",
 			"date": "August 2014",
 			"description": "Side project website of Badass Felines",
-			"image": projectImages[2]
+			"image": projectImages[2],
+			"url": "http://badassfelines.bitballoon.com"
 		}
 	]
 }
@@ -79,13 +82,15 @@ var education = {
 			"name": "Truman College",
 			"location": "Chicago, IL",
 			"major": "Bookkeeping & Quickbooks Certification",
-			"date": 2010
+			"date": 2010,
+			"url": "https://www.ccc.edu/colleges/truman/pages/default.aspx"
 		},
 		{
 			"name": "George Washington University",
 			"location": "Washington D.C.",
 			"major": "Graphic Communications & Publishing",
-			"date": 1995
+			"date": 1995,
+			"url": "http://www.gwu.edu/"
 		}
 	],
 	"online_courses": [
@@ -96,10 +101,10 @@ var education = {
 			"url": "https://www.udacity.com/course/nd001"
 		},
 		{
-			"title": "Front-end Web Developer Course",
+			"title": "Front-end Web Developer Track",
 			"school": "Treehouse",
 			"date": "November 2013 to Present",
-			"url": "https://www.udacity.com/course/nd001"
+			"url": "http://teamtreehouse.com/"
 		},
 		{
 			"title": "HTML, CSS, JavaScript & jQuery",
@@ -174,6 +179,8 @@ projects.display = function() {
 		var projectUrl = HTMLprojectImage.replace("%data%", projects.projects[project].image);
 
 		$(".project-entry:last").append(projectTitle).append(projectDate).append(projectDescription).append(projectUrl);
+		$(".project-entry:last a").attr("href", projects.projects[project].url);
+
 	}
 }
 projects.display();
@@ -190,6 +197,7 @@ education.display = function() {
 		var schoolMajor = HTMLschoolMajor.replace("%data%", education.schools[schools].major);
 
 		$(".education-entry:last").append(schoolName).append(schoolLocation).append(schoolDates).append(schoolMajor);
+		$(".education-entry:last a").attr("href", education.schools[schools].url);
 	}
 
 	$("#education").append(HTMLonlineClasses);
@@ -204,6 +212,7 @@ education.display = function() {
 		var formattedTitleSchool = courseTitle + onlineSchool;
 
 		$(".education-entry:last").append(formattedTitleSchool).append(courseDate).append(courseUrl);
+		$(".education-entry:last a").attr("href", education.online_courses[courses].url);
 	}
 }
 education.display();
