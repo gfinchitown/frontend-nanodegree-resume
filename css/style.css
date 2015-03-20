@@ -142,7 +142,7 @@ a {
 
 #projects,
 #mapDiv {
-  background-color: #bcbec0;
+  background-color: rgba(188, 190, 192, 0.5);
 }
 
 .flex-box {
