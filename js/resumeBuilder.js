@@ -10,10 +10,65 @@ var bio = {
 		"github": "gfinchitown",
 		"location": "Long Beach, CA"
 		},
-	"skills": [
-		"HTML", "CSS", "JavaScript", "Graphic Production", "Adobe Creative Suite (CC)", "Sublime Text", "Coda 2", "Emmet", "Twitter Bootstrap", "Wordpress (basics)", "Chrome Developer Tools", "MAMP", "Git", "Github", "Microsoft Word & Excel", "Quickbooks", "Sage Business Works"
-		],
+	"skills": ["HTML", "CSS", "JavaScript", "Graphic Production", "Adobe Creative Suite (CC)", "Sublime Text", "Coda 2", "Emmet", "Twitter Bootstrap", "Wordpress (basics)", "Chrome Developer Tools", "MAMP", "Git", "Github", "Microsoft Word & Excel", "Quickbooks", "Sage Business Works"],
 	"welcomeMessage": "Thank you for visiting my online resume"
+}
+
+
+//Work Object
+var work = {
+	"jobs": [
+		{
+			"employer": "Self-Employed",
+			"title": "Freeelance Web Developer",
+			"years": "February 2014 to Present",
+			"location": "Long Beach, CA",
+			"description": "Designed and coded websites for clients representing numerous industries including graphic design, photography and acting.",
+			"url": "index.html"
+		},
+		{
+			"employer": "Lather Chicago",
+			"title": "Stylist",
+			"years": "July 2011 to January 2012",
+			"location": "Chicago, IL",
+			"description": "Men's and womens haircuts and haircoloring.",
+			"url": "http://latherchicago.net/"
+		},
+		{
+			"employer": "The Quarasan Group",
+			"title": "Production Coordinator",
+			"years": "September 2001 to April 2004",
+			"location": "Chicago, IL",
+			"description": "Coordinated digital workflow of images and traditional artwork from image aquisition to page production.",
+			"url": "http://quaracore.com/"
+		}
+	]
+}
+
+
+//Project Object
+var projectImages = ["images/brashPuppy.jpg", "images/tiago.jpg", "images/felines.jpg"];
+var projects = {
+	"projects": [
+		{
+			"title": "Brash Puppy Creative",
+			"date": "February 2014",
+			"description": "Website for Brash Puppy Creative",
+			"image": projectImages[0]
+		},
+		{
+			"title": "Tiago Ferreira",
+			"date": "October 2014",
+			"description": "Website for Tiago Ferreira - Hollywood Actor",
+			"image": projectImages[1]
+		},
+		{
+			"title": "Badass Felines",
+			"date": "August 2014",
+			"description": "Side project website of Badass Felines",
+			"image": projectImages[2]
+		}
+	]
 }
 
 
@@ -56,60 +111,6 @@ var education = {
 }
 
 
-//Work Object
-var work = {
-	"jobs": [
-		{
-			"employer": "Self-Employed",
-			"title": "Freeelance Web Developer",
-			"years": "February 2014 to Present",
-			"location": "Long Beach, CA",
-			"description": "Designed and coded websites for clients representing numerous industries including graphic design, photography and acting."
-		},
-		{
-			"employer": "Lather Chicago",
-			"title": "Stylist",
-			"years": "July 2011 to January 2012",
-			"location": "Chicago, IL",
-			"description": "Men's and womens haircuts and haircoloring."
-		},
-		{
-			"employer": "The Quarasan Group",
-			"title": "Production Coordinator",
-			"years": "September 2001 to April 2004",
-			"location": "Chicago, IL",
-			"description": "Coordinated digital workflow of images and traditional artwork from image aquisition to page production."
-		}
-	]
-}
-
-
-//Project Object
-var projectImages = ["images/brashPuppy.jpg", "images/tiago.jpg", "images/felines.jpg"];
-var projects = {
-	"projects": [
-		{
-			"title": "Brash Puppy Creative",
-			"date": "February 2014",
-			"description": "Website for Brash Puppy Creative",
-			"image": projectImages[0]
-		},
-		{
-			"title": "Tiago Ferreira",
-			"date": "October 2014",
-			"description": "Website for Tiago Ferreira - Hollywood Actor",
-			"image": projectImages[1]
-		},
-		{
-			"title": "Badass Felines",
-			"date": "August 2014",
-			"description": "Side project website of Badass Felines",
-			"image": projectImages[2]
-		}
-	]
-}
-
-
 //Header, Bio & Footer content
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -133,9 +134,9 @@ bio.display = function() {
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
 
-		for (i = 0; i < bio.skills.length; i ++) {
-			var formattedSkills = HTMLskills.replace('%data%', bio.skills[i]);
-			$('#skills').prepend(formattedSkills);
+		for (var i = 0; i < bio.skills.length; i++) {
+			var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
+			$("#skills").prepend(formattedSkills);
 		}
 	}
 }
@@ -147,6 +148,7 @@ work.display = function() {
 	for (job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
+
 	var jobEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 	var jobTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
 	var jobCity = HTMLworkLocation.replace("%data%", work.jobs[job].location);
@@ -155,6 +157,7 @@ work.display = function() {
 	var formattedEmployerTitle = jobEmployer + jobTitle;
 
 	$(".work-entry:last").append(formattedEmployerTitle).append(jobCity).append(jobYears).append(jobDescription);
+	$(".work-entry:last a").attr("href", work.jobs[job].url);
 	}
 }
 work.display();
