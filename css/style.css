@@ -68,7 +68,6 @@ h2, h3, h4, h5 {
   padding-right: 5%;
 }
 
-
 .date-text {
   font-style: italic;
   font-size: 14px;
@@ -127,9 +126,8 @@ a {
   background-color: #bcbec0;
 }
 
-/* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  background-color: rgba(188, 190, 192, 0.5);
   background: url('../images/coast.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -201,6 +199,33 @@ span {
   text-align: center;
 }
 
+#map {
+  display: block;
+  height: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#mapDiv {
+  height: 400px;
+  width: 100%;
+  padding-bottom: 5%;
+}
+
+@media only screen and (max-width: 430px) {
+  .project-image {
+    max-width: 100%;
+  }
+
+  .white-text {
+    font-size: 14px;
+  }
+
+  #skillsH3 {
+    font-size: 18px;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   #letsConnect {
     margin-top: 5%;
@@ -222,37 +247,6 @@ span {
   }
   .welcome-message {
     display: none;
-  }
-}
-
-#map {
-  display: block;
-  height: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
-}
-
-#mapDiv {
-  height: 400px;
-  width: 100%;
-  padding-bottom: 5%;
-}
-
-@media only screen and (max-width: 430px) {
-  .project-image {
-    max-width: 100%;
-  }
-
-  /*#skills {
-    display: block;
-  }*/
-
-  .white-text {
-    font-size: 14px;
-  }
-
-  #skillsH3 {
-    font-size: 18px;
   }
 }
 

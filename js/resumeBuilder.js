@@ -3,6 +3,7 @@ var bio = {
 	"name": "Gary Ford",
 	"role": "Front-end Developer",
 	"bioPic": "images/Face1.jpg",
+	"bioPicAltText": "Photo of Gary Ford",
 	"contacts": {
 		"cellNumber": "562-508-1436",
 		"email": "gfinchitown@me.com",
@@ -13,7 +14,6 @@ var bio = {
 	"skills": ["HTML", "CSS", "JavaScript", "Graphic Production", "Adobe Creative Suite (CC)", "Sublime Text", "Coda 2", "Emmet", "Twitter Bootstrap", "Wordpress (basics)", "Chrome Developer Tools", "MAMP", "Git", "Github", "Microsoft Word & Excel", "Quickbooks", "Sage Business Works"],
 	"welcomeMessage": "Thank you for visiting my online resume"
 }
-
 
 //Work Object
 var work = {
@@ -45,7 +45,6 @@ var work = {
 	]
 }
 
-
 //Project Object
 var projectImages = ["images/brashPuppy.jpg", "images/tiago.jpg", "images/felines.jpg"];
 var projects = {
@@ -55,6 +54,7 @@ var projects = {
 			"date": "February 2014",
 			"description": "Website for Brash Puppy Creative",
 			"image": projectImages[0],
+			"imageAltText": "Screen shot of Brash Puppy Creative Homepage",
 			"url": "http://brashpuppycreative.bitballoon.com"
 		},
 		{
@@ -62,6 +62,7 @@ var projects = {
 			"date": "October 2014",
 			"description": "Website for Tiago Ferreira - Hollywood Actor",
 			"image": projectImages[1],
+			"imageAltText": "Screen shot of Tiago Ferreira's Homepage",
 			"url": "http://www.tiagomsferreira.com"
 		},
 		{
@@ -69,11 +70,11 @@ var projects = {
 			"date": "August 2014",
 			"description": "Side project website of Badass Felines",
 			"image": projectImages[2],
+			"imageAltText": "Screen shot of Badass Felines Single Page Website",
 			"url": "http://badassfelines.bitballoon.com"
 		}
 	]
 }
-
 
 //Education Object
 var education = {
@@ -115,7 +116,6 @@ var education = {
 	]
 }
 
-
 //Header, Bio & Footer content
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
@@ -127,10 +127,10 @@ bio.display = function() {
 	var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
 	var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
+	//Header Content
 	$("#header").append(formattedBioPic).prepend(formattedRole).prepend(formattedName);
+	$(".biopic").attr("alt", bio.bioPicAltText);
 	$("#topContacts").append(formattedCell).append(formattedEmail).append(formattedTwitter).append(formattedGithub).append(formattedLocation);
-
-	$("#footerContacts").append(formattedCell).append(formattedEmail).append(formattedTwitter).append(formattedGithub);
 
 	var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 	$("#header").append(formattedMessage);
@@ -144,15 +144,16 @@ bio.display = function() {
 			$("#skills").prepend(formattedSkills);
 		}
 	}
+
+	//Footer Content
+	$("#footerContacts").append(formattedCell).append(formattedEmail).append(formattedTwitter).append(formattedGithub);
 }
 bio.display();
-
 
 //Work Experience content
 work.display = function() {
 	for (job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
-
 
 	var jobEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
 	var jobTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
@@ -167,7 +168,6 @@ work.display = function() {
 }
 work.display();
 
-
 //Projects content
 projects.display = function() {
 	for(project in projects.projects) {
@@ -179,12 +179,11 @@ projects.display = function() {
 		var projectUrl = HTMLprojectImage.replace("%data%", projects.projects[project].image);
 
 		$(".project-entry:last").append(projectTitle).append(projectDate).append(projectDescription).append(projectUrl);
+		$(".project-image:last").attr("alt", projects.projects[project].imageAltText);
 		$(".project-entry:last a").attr("href", projects.projects[project].url);
-
 	}
 }
 projects.display();
-
 
 //Education content
 education.display = function() {
@@ -217,9 +216,4 @@ education.display = function() {
 }
 education.display();
 
-
 $("#mapDiv").append(googleMap);
-
-
-
-
